@@ -10,7 +10,7 @@ enum CardSelectorState { idle, target, switching, targetBack, switchingBack }
 /// A widget to select stacked widgets sliding left or right
 class CardSelector extends StatefulWidget {
   final List<Widget> cards;
-  final ValueChanged<int> onChanged;
+  final ValueChanged<int>? onChanged;
   final double mainCardWidth;
   final double mainCardHeight;
   final double mainCardPadding;
@@ -38,7 +38,7 @@ class CardSelector extends StatefulWidget {
   /// The [lastCardSizeFactor] is the factore of the last element to render
   /// compare to the first element.
   CardSelector({
-    @required this.cards,
+    required this.cards,
     this.onChanged,
     this.mainCardWidth = 240,
     this.mainCardHeight = 150,
@@ -133,7 +133,7 @@ class _CardSelectorState extends State<CardSelector> {
       height: widget.mainCardHeight,
       width: dropWidth,
       child: DragTarget(
-        builder: (context, List<String> candidateData, rejectedData) {
+        builder: (context, List<String?> candidateData, rejectedData) {
           return Container(
             height: widget.mainCardHeight,
             width: widget.dropTargetWidth,
@@ -161,7 +161,7 @@ class _CardSelectorState extends State<CardSelector> {
           height: widget.mainCardHeight,
           width: dropWidth,
           child: DragTarget(
-            builder: (context, List<String> candidateData, rejectedData) {
+            builder: (context, List<String?> candidateData, rejectedData) {
               return Container(
                 height: widget.mainCardHeight,
                 width: widget.dropTargetWidth,
@@ -300,7 +300,7 @@ class _CardSelectorState extends State<CardSelector> {
       disableDraggable = false;
 
       if (widget.onChanged != null) {
-        widget.onChanged(initialCardListIndex % widget.cards.length);
+        widget.onChanged!(initialCardListIndex % widget.cards.length);
       }
 
       updateState(CardSelectorState.idle);
@@ -318,7 +318,7 @@ class _CardSelectorState extends State<CardSelector> {
       _cards.add(first);
 
       if (widget.onChanged != null) {
-        widget.onChanged(initialCardListIndex % widget.cards.length);
+        widget.onChanged!(initialCardListIndex % widget.cards.length);
       }
 
       updateState(CardSelectorState.idle);

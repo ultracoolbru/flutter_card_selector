@@ -52,7 +52,7 @@ class _HState extends State<Home> {
                 "Fancy Wallet",
                 style: Theme.of(c)
                     .textTheme
-                    .display3
+                    .headline2
                     .copyWith(fontFamily: 'rms', color: Colors.white),
               ),
             ),
@@ -92,7 +92,7 @@ class Amounts extends StatelessWidget {
               children: <Widget>[
                 Text('Balance', style: tt.caption),
                 SizedBox(height: 8.0),
-                Text(_c['bl'], style: tt.display1.apply(color: Colors.white)),
+                Text(_c['bl'], style: tt.headline4.apply(color: Colors.white)),
                 SizedBox(height: 24.0),
                 Text('Today', style: tt.caption),
               ],
@@ -110,12 +110,13 @@ class Amounts extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(tx['m'], style: tt.title.apply(color: Colors.white)),
+                    Text(tx['m'],
+                        style: tt.headline6.apply(color: Colors.white)),
                     Text(tx['t'], style: tt.caption)
                   ],
                 ),
               ),
-              Text(tx['a'], style: tt.body2.apply(color: Colors.deepOrange))
+              Text(tx['a'], style: tt.bodyText1.apply(color: Colors.deepOrange))
             ],
           ),
         );
@@ -149,7 +150,7 @@ class Card extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(_c['bk'], style: tt.title),
+                  Text(_c['bk'], style: tt.headline6),
                   Text(_c['ty'].toUpperCase(), style: tt.caption),
                   Expanded(child: Container()),
                   Row(
@@ -157,7 +158,8 @@ class Card extends StatelessWidget {
                     children: <Widget>[
                       Expanded(
                         child: Text(_c['nm'],
-                            style: tt.subhead, overflow: TextOverflow.ellipsis),
+                            style: tt.subtitle1,
+                            overflow: TextOverflow.ellipsis),
                       ),
                       Image.asset('assets/${_c['br']}.png', width: 48.0)
                     ],
